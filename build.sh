@@ -47,7 +47,7 @@ if [[ "$MODE" == "--release" ]]; then
     rm -f "$ZIP"
     ditto -c -k --keepParent "$APP" "$ZIP"
     spctl --assess --type execute --verbose "$APP"
-    echo "Release ready: $ZIP"
+    echo "Release ready: $ZIP (sha256 $(shasum -a 256 "$ZIP" | cut -d" " -f1))"
     exit 0
 fi
 
